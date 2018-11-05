@@ -1,7 +1,8 @@
 FROM ubuntu:14.04
-LABEL maintainer="Jeff Geerling"
+LABEL maintainer="Jason Goldfine-Middleton"
 
-ENV pip_packages "ansible yamllint ansible-lint flake8 testinfra molecule"
+ARG DEBIAN_FRONTEND=noninteractive
+ARG PIP_PACKAGES="ansible yamllint ansible-lint flake8 testinfra molecule"
 
 # Install dependencies and upgrade Python.
 RUN apt-get update \
@@ -20,14 +21,12 @@ RUN apt-get update \
 # Install Ansible via Pip.
 ADD https://bootstrap.pypa.io/get-pip.py .
 RUN /usr/bin/python2.7 get-pip.py \
-  && pip install $pip_packages
+  && pip install $PIP_PACKAGES \
+  && rm -f get-pip.py
 
 # Install Ansible inventory file.
 RUN mkdir -p /etc/ansible
 RUN echo "[local]\nlocalhost ansible_connection=local" > /etc/ansible/hosts
-
-# Workaround for pleaserun tool that Logstash uses
-RUN rm -rf /sbin/initctl && ln -s /sbin/initctl.distrib /sbin/initctl
 
 VOLUME ["/sys/fs/cgroup"]
 CMD ["/sbin/init"]
