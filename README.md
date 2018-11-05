@@ -1,6 +1,6 @@
 # Ubuntu 14.04 LTS (Trusty) Ansible Test Image
 
-[![Docker Automated build](https://img.shields.io/docker/automated/jrgoldfinemiddleton/docker-ubuntu1404-ansible.svg?maxAge=2592000)](https://hub.docker.com/r/jrgoldfinemiddleton/docker-ubuntu1404-ansible/)
+[![Docker Automated build](https://img.shields.io/docker/automated/jrgoldfinemiddleton/ubuntu1404-ansible.svg?maxAge=2592000)](https://hub.docker.com/r/jrgoldfinemiddleton/ubuntu1404-ansible/)
 
 Ubuntu 14.04 LTS (Trusty) Docker container for Ansible playbook and role testing.
 
